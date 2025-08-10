@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SmartProfitAI - Transform your life with AI</title>
+  <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff;
+      color: #222;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+    }
+    header {
+      background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%);
+      color: white;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.15);
+    }
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    nav a {
+      margin-left: 20px;
+      font-weight: 600;
+      color: white;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    /* Hero */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 60px 0 40px;
+      gap: 30px;
+    }
+    .hero-text {
+      flex: 1 1 400px;
+    }
+    .hero-text h2 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      font-weight: 800;
+      line-height: 1.1;
+      color: #111827;
+    }
+    .hero-text p {
+      font-size: 1.15rem;
+      margin-bottom: 25px;
+      color: #4b5563;
+    }
+    .hero-buttons a {
+      background-color: #2563eb;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-weight: 600;
+      margin-right: 15px;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+    .hero-buttons a.secondary {
+      background-color: transparent;
+      border: 2px solid #2563eb;
+      color: #2563eb;
+    }
+    .hero-buttons a:hover {
+      background-color: #1e40af;
+      color: white;
+      border-color: #1e40af;
+    }
+    .hero-buttons a.secondary:hover {
+      background-color: #2563eb;
+      color: white;
+    }
+    .hero-image {
+      flex: 1 1 350px;
+      background: linear-gradient(135deg, #f9fafb, #e5e7eb);
+      border-radius: 20px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 10px 20px rgb(0 0 0 / 0.1);
+      color: #9ca3af;
+      font-size: 2rem;
+      font-weight: 700;
+      user-select: none;
+    }
+    /* Features */
+    .features {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .feature {
+      flex: 1 1 250px;
+      background: #f3f4f6;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 8px rgb(0 0 0 / 0.05);
+      transition: transform 0.3s ease;
+    }
+    .feature:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 20px rgb(0 0 0 / 0.12);
+    }
+    .feature h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: #111827;
+    }
+    .feature p {
+      font-size: 0.95rem;
+      color: #6b7280;
+    }
+    /* Articles */
+    .articles {
+      margin-top: 60px;
+    }
+    .articles h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #111827;
+      text-align: center;
+    }
+    .article-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
+    }
+    .article {
+      flex: 1 1 320px;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 0 8px rgb(0 0 0 / 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: box-shadow 0.3s ease;
+    }
+    .article:hover {
+      box-shadow: 0 10px 25px rgb(0 0 0 / 0.15);
+    }
+    .article-image {
+      height: 150px;
+      background: #f9fafb;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #9ca3af;
+      font-weight: 600;
+      user-select: none;
+      font-size: 1.1rem;
+    }
+    .article h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #111827;
+    }
+    .article p {
+      flex-grow: 1;
+      font-size: 0.95rem;
+      color: #6b7280;
+    }
+    .article a.read-more {
+      margin-top: 15px;
+      color: #2563eb;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .article a.read-more:hover {
+      text-decoration: underline;
+    }
+    /* CTA section */
+    .cta {
+      margin-top: 60px;
+      background: #f3f4f6;
+      padding: 40px 20px;
+      border-radius: 15px;
+      text-align: center;
+    }
+    .cta h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #111827;
+    }
+    .cta p {
+      font-size: 1.1rem;
+      color: #4b5563;
+      margin-bottom: 25px;
+    }
+    .cta form {
+      max-width: 400px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .cta input[type="email"] {
+      flex: 1 1 250px;
+      padding: 12px 15px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 1rem;
+      outline-offset: 2px;
+    }
+    .cta button {
+      padding: 12px 25px;
+      background-color: #f97316;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      flex: 1 1 120px;
+    }
+    .cta button:hover {
+      background-color: #ea580c;
+    }
+    /* About */
+    #about {
+      margin-top: 60px;
+      padding: 40px 20px;
+      background: #e0e7ff;
+      border-radius: 15px;
+      color: #1e293b;
+    }
+    #about .container {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    #about h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    #about p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    /* Contact */
+    #contact {
+      margin-top: 60px;
+      padding: 40px 20px;
+      background: #f9fafb;
+      border-radius: 15px;
+    }
+    #contact .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    #contact h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-align: center;
+      color: #111827;
+    }
+    #contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    #contact label {
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #374151;
+    }
+    #contact input,
+    #contact textarea {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      font-size: 1rem;
+      resize: vertical;
+    }
+    #contact button {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #contact button:hover {
+      background-color: #1e40af;
+    }
+    /* Footer */
+    footer {
+      margin-top: auto;
+      background: #f9fafb;
+      padding: 25px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #6b7280;
+      border-top: 1px solid #e5e7eb;
+    }
+    footer a {
+      color: #2563eb;
+      margin: 0 8px;
+      font-weight: 600;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+      }
+      .hero-image {
+        height: 250px;
+      }
+      nav {
+        display: none;
+      }
+      header .container {
+        justify-content: center;
+      }
+      .features {
+        flex-direction: column;
+      }
+      .feature {
+        flex: 1 1 100%;
+      }
+      .article-list {
+        flex-direction: column;
+      }
+      .article {
+        flex: 1 1 100%;
+      }
+      .cta form {
+        flex-direction: column;
+      }
+      .cta button, .cta input[type="email"] {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>SmartProfitAI</h1>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#blog">Blog</a>
+        <a href="#resources">Resources</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <h2>Transform your life with Artificial Intelligence</h2>
+        <p>Learn how to use AI to save time, create content, and build sustainable income—even without technical skills. Practical guides, ready-to-use templates, and step-by-step plans to launch your AI-powered side hustle.</p>
+        <div class="hero-buttons">
+          <a href="#newsletter">Get the free guide</a>
+          <a href="#blog" class="secondary">Read the Blog</a>
+        </div>
+      </div>
+      <div class="hero-image" aria-label="Illustration of AI technology and profits">
+        AI + Profit
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="resources">
+      <div class="feature">
+        <h3>Easy Tutorials</h3>
+        <p>Step-by-step AI guides for beginners and experts to help you create impactful projects.</p>
+      </div>
+      <div class="feature">
+        <h3>Templates & Tools</h3>
+        <p>Download ready-to-use AI prompts, scripts, and marketing tools tailored to your niche.</p>
+      </div>
+      <div class="feature">
+        <h3>Community Support</h3>
+        <p>Join our growing community and get help, tips, and feedback on your AI journey.</p>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="articles" id="blog">
+      <h2>Latest Blog Posts</h2>
+      <div class="article-list">
+        <article class="article">
+          <div class="article-image">Content Creation</div>
+          <h3>How AI Can Boost Your Content Creation</h3>
+          <p>Discover how to leverage AI tools to produce blog posts, videos, and social media content effortlessly.</p>
+          <a href="#" class="read-more">Read more →</a>
+        </article>
+        <article class="article">
+          <div class="article-image">Passive Income</div>
+          <h3>Building Passive Income with AI</h3>
+          <p>Learn smart strategies to generate revenue streams using AI-powered automation and marketing.</p>
+          <a href="#" class="read-more">Read more →</a>
+        </article>
+        <article class="article">
+          <div class="article-image">AI Basics</div>
+          <h3>AI for Beginners: What You Need to Know</h3>
+          <p>Understand the fundamentals of AI and how you can start integrating it into your business or projects.</p>
+          <a href="#" class="read-more">Read more →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="container">
+        <h2>About SmartProfitAI</h2>
+        <p>SmartProfitAI was created to empower individuals with the knowledge and tools to harness the power of AI. Whether you're an entrepreneur, freelancer, or hobbyist, our mission is to help you unlock new opportunities and build a sustainable income online.</p>
+        <p>Our content is practical, actionable, and designed for all skill levels. Join us and start your AI journey today!</p>
+      </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="cta" id="newsletter">
+      <h2>Get Your Free AI Profit Guide</h2>
+      <p>Subscribe to receive exclusive tips, tutorials, and freebies delivered straight to your inbox.</p>
+      <form action="#" method="POST" onsubmit="alert('Thank you for subscribing!'); return false;">
+        <input type="email" name="email" placeholder="Enter your email" required aria-label="Email address" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <form action="#" method="POST" onsubmit="alert('Message sent!'); return false;">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required />
+          <label for="email-contact">Email</label>
+          <input id="email-contact" name="email" type="email" placeholder="Your email" required />
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 SmartProfitAI •
+    <a href="#privacy">Privacy Policy</a> •
+    <a href="#terms">Terms of Service</a>
+  </footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
